@@ -1,17 +1,14 @@
-function sendMessage() {
+function sendEmail() {
     // Ambil nilai dari form
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const subject = document.getElementById('subject').value;
     const message = document.getElementById('message').value;
 
-    // Format pesan untuk dikirim ke WhatsApp
-    const whatsappMessage = `Nama: ${name}%0AEmail: ${email}%0ASubject: ${subject}%0APesan: ${message}`;
-    const phoneNumber = "6285175462304"; // Ganti dengan nomor WhatsApp Anda
+    // Format email yang akan dikirim
+    const emailRecipient = "syahrulsyaban3009@gmail.com"; // Ganti dengan alamat email tujuan Anda
+    const mailtoLink = `mailto:${emailRecipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Nama: ${name}\nEmail: ${email}\n\nPesan:\n${message}`)}`;
 
-    // Buat link WhatsApp
-    const whatsappURL = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
-
-    // Buka WhatsApp
-    window.open(whatsappURL, '_blank');
+    // Buka aplikasi email default dengan link yang telah dibuat
+    window.location.href = mailtoLink;
 }
